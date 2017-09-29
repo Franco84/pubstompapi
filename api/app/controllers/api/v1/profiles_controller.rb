@@ -8,15 +8,21 @@ class Api::V1::ProfilesController < ApplicationController
   
     def show
       profile_id = params[:profile_id]
+      display_name = params[:display_name]
+
       @profile = Profile.find(profile_id)
+      if !!@profile
+        @profile = Profile.find_by({ display_name: display_name })
+      end 
 
       render json: { profile: @profile }
     end
   
     def create
       @user = get_current_user
-
-      if !!current_user
+      puts "user"
+      puts @user 
+      if !!@user
         @profile = Profile.new(profile_params)
         
         if @profile.save

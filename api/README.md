@@ -12,4 +12,5 @@ GET:
 
 /profiles =>  lists all profiles
 /profile/:id =>  returns profile info
+/profile/:display_name =>  returns profile info
 
