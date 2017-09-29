@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_authed?
-    token = request.headers['AUTHORIZATION_TOKEN']
+    token = request.headers['JWT']
     puts token
 
     if token
