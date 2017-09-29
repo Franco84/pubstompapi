@@ -1,12 +1,13 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users
+    render json: { users: @users }
   end
 
   def show
-    render json: get_current_user
+    @user = User.find(params[:id])
+    render json: { user: @user }
   end
 
   def create
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { jwt: jwt, user: @user }
+      render json: { token: jwt }
     else
       render json: {
         error: "User failed to create",
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { jwt: jwt, user: @user }
+      render json: { token: jwt }
     else
       render json: {
         error: "Username or Password Incorrect"
@@ -38,14 +39,18 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render json: @user
+      render json: { user: @user }
     else
       render json: @user.errors, status: 400
     end
   end
 
   def destroy
-    @user.destroy
+    if @user.destroy
+      render json: { message: 'User was deleted successfully.' }
+    else
+      render json: @user.errors, status: 400
+    end
   end
 
   private
@@ -54,7 +59,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.permit(:username, :password, :password_confirmation)
+      params.permit(:email, :password, :password_confirmation)
     end
 
 end
