@@ -2,12 +2,12 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: { users: @users }
+    render json: @users, each_serializer: UserSerializer
   end
 
   def show
     @user = User.find(params[:id])
-    render json: { user: @user }
+    render json: @user, serializer: UserSerializer    
   end
 
   def create
@@ -39,7 +39,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render json: { user: @user }
+      render json: @user, serializer: UserSerializer
     else
       render json: @user.errors, status: 400
     end

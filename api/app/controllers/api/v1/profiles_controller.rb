@@ -2,58 +2,33 @@ class Api::V1::ProfilesController < ApplicationController
   
     def index
       @profiles = Profile.all
-
-      render json: { profiles: @profiles }
+      render json: @profiles, each_serializer: ProfileSerializer
     end
   
     def show
-      profile_id = params[:profile_id]
-      display_name = params[:display_name]
-
-      @profile = Profile.find(profile_id)
-      if !!@profile
-        @profile = Profile.find_by({ display_name: display_name })
-      end 
-
-      render json: { profile: @profile }
+      @profile = Profile.find(params[:id])
+      render json: @profile, serializer: ProfileSerializer
     end
   
     def create
       @user = get_current_user
-      puts "user"
-      puts @user 
-      if !!@user
-        @profile = Profile.new(profile_params)
-        
-        if @profile.save
-          @user.profile_id = @profile.id
+      profile_save_params = profile_params
+      profile_save_params[:user_id] = @user.id
 
-          if @user.save
-            render json: { profile: @profile }
-          else 
-            @profile.destroy
-            render json: {
-              error: "Profile could not be saved to user",
-              status: 402
-            }, status: 402
-          end
-        else
-          render json: {
-            error: "Profile failed to create",
-            status: 400
-          }, status: 400
-        end
+      @profile = Profile.new(profile_save_params)
+      if @profile.save
+        render json: @profile, serializer: ProfileSerializer
       else
         render json: {
-          error: "Profile failed to create, must be logged in to create a profile",
-          status: 402
-        }, status: 402
-      end  
+          error: "Profile failed to create",
+          status: 400
+        }, status: 400
+      end
     end
   
     def update
       if @profile.update(profile_params)
-        render json: { profile: @profile }
+        render json: @profile, serializer: ProfileSerializer
       else
         render json: @profile.errors, status: 400
       end

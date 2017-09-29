@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20170928131042) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
-    t.string "display_name"
-    t.string "first_name"
-    t.string "last_name"
+    t.integer "user_id"
+    t.string  "display_name"
+    t.string  "first_name"
+    t.string  "last_name"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "profile_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
