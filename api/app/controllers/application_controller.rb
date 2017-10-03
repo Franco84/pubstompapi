@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     @user
   end
 
-  def user_authed?
+  def authenticate_user?
     token = request.headers['JWT']
     puts token
 
