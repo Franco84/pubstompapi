@@ -19,7 +19,7 @@ class Api::V1::UserGamesController < ApplicationController
 
       @user_game = UserGame.new(user_game_save_params)
       if @user_game.save
-        render json: @user_game, serializer: UserGameSerializer
+        render json: { message: 'User is now following game.'}
       else
         render json: {
           error: "Game could not be added to User\'s list",
