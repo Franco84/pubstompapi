@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       
       resources :users
       resources :profiles
+      resources :games
+      resources :user_games
     end
   end
 end
