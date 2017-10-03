@@ -1,15 +1,16 @@
 class Api::V1::UserGamesController < ApplicationController
   before_action :authenticate_user?
   
-    def index
-      @user_games = UserGame.all
-      render json: @user_games, each_serializer: UserGameSerializer
-    end
+    #  NO USE CURRENTLY
+    # def index
+    #   @user_games = UserGame.all
+    #   render json: @user_games, each_serializer: UserGameSerializer
+    # end
   
-    def show
-      @user_game = UserGame.find(params[:id])
-      render json: @user_game, serializer: UserGameSerializer
-    end
+    # def show
+    #   @user_game = UserGame.find(params[:id])
+    #   render json: @user_game, serializer: UserGameSerializer
+    # end
   
     def create
       @user = get_current_user
@@ -26,7 +27,7 @@ class Api::V1::UserGamesController < ApplicationController
         }, status: 400
       end
     end
-    
+
     # NO CURRENT USE
     # def update
     #   if @user_game.update(user_game_params)
