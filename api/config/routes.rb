@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :profiles
       resources :games
       resources :user_games
+      resources :teammates
     end
   end
 end
