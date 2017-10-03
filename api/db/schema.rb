@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003115531) do
+ActiveRecord::Schema.define(version: 20171003223703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20171003115531) do
     t.string  "display_name"
     t.string  "first_name"
     t.string  "last_name"
+  end
+
+  create_table "teammates", id: false, force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "teammate_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["teammate_id", "user_id"], name: "index_teammates_on_teammate_id_and_user_id", unique: true, using: :btree
+    t.index ["user_id", "teammate_id"], name: "index_teammates_on_user_id_and_teammate_id", unique: true, using: :btree
   end
 
   create_table "user_games", force: :cascade do |t|
