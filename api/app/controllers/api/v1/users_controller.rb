@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user, serializer: UserSerializer    
+    render json: @user, serializer: UserSerializer
   end
 
   def create
@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user.save
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { token: jwt }
+      render json: { token: jwt, id: @user.id }
     else
       render json: {
         error: "User failed to create",
@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { token: jwt }
+      render json: { token: jwt, id: @user.id }
     else
       render json: {
         error: "Username or Password Incorrect"
