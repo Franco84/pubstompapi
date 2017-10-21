@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user.save
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { token: jwt, id: @user.id }
+      render json: { token: jwt }
     else
       render json: {
         error: "User failed to create",
@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       jwt = Auth.encrypt({ user_id: @user.id })
-      render json: { token: jwt, id: @user.id }
+      render json: { token: jwt }
     else
       render json: {
         error: "Username or Password Incorrect"

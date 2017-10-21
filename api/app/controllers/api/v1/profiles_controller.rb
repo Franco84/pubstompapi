@@ -7,7 +7,7 @@ class Api::V1::ProfilesController < ApplicationController
     end
 
     def show
-      if @profile = Profile.where(["user_id = ?", params[:id]]).first
+      if @profile = Profile.where(["user_id = ?", @user.id]).first
         render json: @profile, serializer: ProfileSerializer
       else
         render json: {
@@ -34,7 +34,7 @@ class Api::V1::ProfilesController < ApplicationController
     end
 
     def update
-      @profile = Profile.where(["user_id = ?", params[:id]]).first
+      @profile = Profile.where(["user_id = ?", @user.id]).first
       if @profile.update(profile_params)
         render json: @profile, serializer: ProfileSerializer
       else
@@ -54,7 +54,7 @@ class Api::V1::ProfilesController < ApplicationController
     private
 
       def profile_params
-        params.permit(:display_name, :first_name, :last_name, :user_id, :id)
+        params.permit(:display_name, :first_name, :last_name)
       end
 
   end
