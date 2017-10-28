@@ -34,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: {
         error: "Username or Password Incorrect"
-      }
+      }, status: 422
     end
   end
 
