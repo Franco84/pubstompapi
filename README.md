@@ -14,3 +14,9 @@ GET:
 /profile/:id =>  returns profile info
 /profile/:display_name =>  returns profile info
 
+Getting Started: 
+
+### ImageMagick
+ImageMagick is a command line utility for processing images. The Paperclip gem depends on it for resizing thumbnails
+
+brew install imagemagick
