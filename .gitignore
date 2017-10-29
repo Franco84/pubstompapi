@@ -7,11 +7,31 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
+/tmp
+.*.sw*
 
-# Ignore Byebug command history file.
-.byebug_history
+# Files in system
+public/system/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# dotenv
+.env
+
+.DS_Store
+
+db/schema.rb
+public/assets/*
+/public/packs
+/public/packs-test
+/node_modules

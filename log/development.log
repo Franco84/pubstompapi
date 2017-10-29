@@ -1,0 +1,1923 @@
+  [1m[35m (24.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20170928130648)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying, "password_digest" character varying, "profile_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928130648"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfiles (20170928131042)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" serial primary key, "display_name" character varying, "first_name" character varying, "last_name" character varying)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928131042"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-28 13:26:18.125292"], ["updated_at", "2017-09-28 13:26:18.125292"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/api/v1" for 127.0.0.1 at 2017-09-28 18:39:23 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [10 times] (12.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (21.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (131.1ms)
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:39:28 -0400
+  
+SyntaxError (/Users/eric/Projects/PubStomp/pubstompapi/api/app/controllers/application_controller.rb:16: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/application_controller.rb:16: syntax error, unexpected keyword_end, expecting end-of-input
+app/controllers/api/v1/users_controller.rb:1:in `<top (required)>'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.6ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.6ms)
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:39:53 -0400
+  
+LoadError (Unable to autoload constant Api::V1::UsersController, expected /Users/eric/Projects/PubStomp/pubstompapi/api/app/controllers/api/v1/users_controller.rb to define it):
+  
+activesupport (5.0.6) lib/active_support/dependencies.rb:512:in `load_missing_constant'
+activesupport (5.0.6) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.6) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.6) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.6) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.8ms)
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:41:47 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:45:24 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signup?email=test%40test.com&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2017-09-28 18:46:23 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [10 times] (2.5ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (69.7ms)
+Started POST "/signup?email=test%40test.com&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2017-09-28 18:46:44 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [10 times] (2.4ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (64.8ms)
+Started POST "/signup?email=test%40test.com&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2017-09-28 18:47:32 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (uninitialized constant UsersController):
+  
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.6) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.6) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [18 times] (5.4ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.3ms)
+Started POST "/api/v1/signup?email=test%40test.com&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2017-09-28 18:48:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"count"=>"10", "known"=>"[     {         \"symbol\": \"AAPL\",         \"security_id\": \"1670\",         \"sentiment\": 1,         \"interest\": 1     },     {         \"symbol\": \"SPY\",         \"security_id\": \"1155\",         \"sentiment\": -1,         \"interest\": 1     },     {         \"symbol\": \"IJH\",         \"security_id\": \"635\",         \"sentiment\": 1,         \"interest\": 0.5     }, {         \"symbol\": \"TSLA\",         \"security_id\": \"4000\",         \"sentiment\": 1,         \"interest\": 1     } ]", "email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:223:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:218:in `verify_authenticity_token'
+activesupport (5.0.6) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.6) lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.0.6) lib/active_support/callbacks.rb:170:in `block in halting'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `each'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.6) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.0ms)
+Started POST "/api/v1/signup?email=test%40test.com&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2017-09-28 18:49:55 -0400
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:223:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:218:in `verify_authenticity_token'
+activesupport (5.0.6) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.6) lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.0.6) lib/active_support/callbacks.rb:170:in `block in halting'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `each'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.6) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.0ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.1ms)
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-28 18:50:05 -0400
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:223:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:218:in `verify_authenticity_token'
+activesupport (5.0.6) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.6) lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.0.6) lib/active_support/callbacks.rb:170:in `block in halting'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `each'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.6) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.3ms)
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-28 18:50:31 -0400
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 16.1ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/api/v1/users_controller.rb:14:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (50.3ms)
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-28 18:55:28 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.com"], ["password_digest", "$2a$10$aQFPSJx9eWtQ8xIUNaMhUOvghnHpQpKHJ8XId3U2kgcgTK8.AjhrS"], ["created_at", "2017-09-28 22:55:28.992207"], ["updated_at", "2017-09-28 22:55:28.992207"]]
+  [1m[35m (75.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 203ms (Views: 0.5ms | ActiveRecord: 86.5ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:56:03 -0400
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 400 Bad Request in 72ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/users/index" for 127.0.0.1 at 2017-09-28 18:56:36 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"index"}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/users/test@test.com" for 127.0.0.1 at 2017-09-28 18:56:44 -0400
+Processing by Api::V1::UsersController#show as 
+  Parameters: {"id"=>"test@test"}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-28 18:56:48 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-28 18:57:29 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-28 18:58:19 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-09-28 18:59:06 -0400
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-28 18:59:31 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:01:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#index as */*
+  [1m[36mProfile Load (1.9ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+Completed 200 OK in 16ms (Views: 1.6ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:01:54 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<Api::V1::ProfilesController:0x007f9294a155f8>):
+  
+app/controllers/api/v1/profiles_controller.rb:24:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (94.1ms)
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:02:24 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:03:23 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:04:34 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-09-29 08:05:11 -0400
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 85ms (Views: 0.2ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/api/v1/login" for 127.0.0.1 at 2017-09-29 08:05:16 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/login"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [18 times] (4.3ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.0ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.3ms)
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-09-29 08:05:37 -0400
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 68ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:06:02 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:06:15 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:06:58 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:07:32 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:07:49 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:08:16 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:09:45 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 11ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:14:03 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:14:45 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:15:10 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:15:16 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:15:42 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:15:50 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:16:11 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:9:in `get_current_user'
+app/controllers/api/v1/profiles_controller.rb:22:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.0ms)
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:16:44 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:16:59 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 402 Payment Required in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:17:17 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:9:in `get_current_user'
+app/controllers/api/v1/profiles_controller.rb:22:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.9ms)
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-09-29 08:17:30 -0400
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 0.2ms | ActiveRecord: 9.3ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:17:51 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"testuser"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "testuser"], ["LIMIT", 1]]
+  [1m[35mSQL (4.1ms)[0m  [1m[32mINSERT INTO "profiles" ("display_name") VALUES ($1) RETURNING "id"[0m  [["display_name", "testuser"]]
+  [1m[35m (63.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "test@test.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "profile_id" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["profile_id", 1], ["updated_at", "2017-09-29 12:17:51.197882"], ["id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 102ms (Views: 0.3ms | ActiveRecord: 77.0ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:18:22 -0400
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-29 08:19:00 -0400
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"eric@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eric@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "eric@test.com"], ["password_digest", "$2a$10$o6Zyg4XLd1ibB3wuTNMzHO6ex9mqtWfvfn3lbuKrvMZZNUPDitPkS"], ["created_at", "2017-09-29 12:19:00.953710"], ["updated_at", "2017-09-29 12:19:00.953710"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 67ms (Views: 0.2ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:19:29 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"emoney"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "emoney"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "profiles" ("display_name") VALUES ($1) RETURNING "id"[0m  [["display_name", "emoney"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "eric@test.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "profile_id" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["profile_id", 2], ["updated_at", "2017-09-29 12:19:29.973554"], ["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 08:19:37 -0400
+Processing by Api::V1::ProfilesController#index as */*
+  [1m[36mProfile Load (1.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:19:42 -0400
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:47:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.89ms)
+Completed 200 OK in 38ms (Views: 15.7ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:47:14 -0400
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.79ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:54:45 -0400
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.93ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 08:55:15 -0400
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.18ms)
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-29 08:55:19 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.39ms)
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-29 09:00:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 39ms (Views: 9.6ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:00:55 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (1.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.36ms)
+Completed 200 OK in 17ms (Views: 4.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:01:08 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (1.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.08ms)
+Completed 200 OK in 12ms (Views: 6.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:03:06 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.08ms)
+Completed 200 OK in 19ms (Views: 7.3ms | ActiveRecord: 0.3ms)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (219.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_development"[0m
+  [1m[35m (216.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_test"[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (22.4ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" serial primary key, "display_name" character varying, "first_name" character varying, "last_name" character varying)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying, "password_digest" character varying, "profile_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170928131042)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170928130648);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-29 13:05:27.729215"], ["updated_at", "2017-09-29 13:05:27.729215"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" serial primary key, "display_name" character varying, "first_name" character varying, "last_name" character varying)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying, "password_digest" character varying, "profile_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170928131042)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170928130648);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-29 13:05:27.833003"], ["updated_at", "2017-09-29 13:05:27.833003"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-29 09:09:33 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"eric@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eric@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "eric@test.com"], ["password_digest", "$2a$10$G9PuEsIDijIzIHvrXIagbe9kFsgOMbiZ36ZfLk96MU0tntC2TZ566"], ["created_at", "2017-09-29 13:09:33.725818"], ["updated_at", "2017-09-29 13:09:33.725818"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 117ms (Views: 8.3ms | ActiveRecord: 13.3ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:09:56 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"emoney"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `user_id' for #<User:0x007fe8314792f0>):
+  
+app/controllers/api/v1/profiles_controller.rb:24:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (57.0ms)
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:10:21 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"emoney"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_id' for Profile.):
+  
+app/controllers/api/v1/profiles_controller.rb:26:in `create'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.6ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (123.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_development"[0m
+  [1m[35m (121.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_test"[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20170928130648)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928130648"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfiles (20170928131042)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" serial primary key, "user_id" integer, "display_name" character varying, "first_name" character varying, "last_name" character varying)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928131042"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-29 13:11:50.927352"], ["updated_at", "2017-09-29 13:11:50.927352"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started POST "/api/v1/signup" for 127.0.0.1 at 2017-09-29 09:12:13 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"eric@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eric@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "eric@test.com"], ["password_digest", "$2a$10$CcIczs0lI0NNwmc6Ghlwb.A1HQ4UEKcgExaJnyCrn/sTAVjUkzZEO"], ["created_at", "2017-09-29 13:12:14.112128"], ["updated_at", "2017-09-29 13:12:14.112128"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 134ms (Views: 19.3ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:12:32 -0400
+Processing by Api::V1::ProfilesController#create as */*
+  Parameters: {"display_name"=>"emoney"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "emoney"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "display_name") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["display_name", "emoney"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 43ms (Views: 0.7ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:12:45 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.81ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:20:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.07ms)
+Completed 200 OK in 37ms (Views: 15.2ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:38:14 -0400
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:38:24 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.58ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.11ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:39:38 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.7ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:42:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (1.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.09ms)
+Completed 200 OK in 50ms (Views: 17.6ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:43:09 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.4ms)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/profile/1" for 127.0.0.1 at 2017-09-29 09:43:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/profile/1"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [18 times] (4.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (28.7ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (105.7ms)
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:43:35 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 12ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Profile with 'id'=):
+  
+app/controllers/api/v1/profiles_controller.rb:13:in `show'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.7ms)
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:44:43 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "1"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 12ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/profiles/emoney" for 127.0.0.1 at 2017-09-29 09:44:57 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"emoney"}
+  [1m[36mProfile Load (1.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 1.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Profile with 'id'=emoney):
+  
+app/controllers/api/v1/profiles_controller.rb:13:in `show'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.2ms)
+Started GET "/api/v1/profiles/emoney" for 127.0.0.1 at 2017-09-29 09:45:19 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"emoney"}
+  [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 7ms (ActiveRecord: 2.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Profile with 'id'=emoney):
+  
+app/controllers/api/v1/profiles_controller.rb:10:in `show'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.6ms)
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:45:25 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 10ms (Views: 4.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:45:42 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 12ms (Views: 4.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:45:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (1.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 42ms (Views: 9.5ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:47:57 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (5.14ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `read_attribute_for_serialization' for #<Hash:0x007f9514db1428>):
+  
+app/controllers/api/v1/profiles_controller.rb:11:in `show'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.4ms)
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:49:39 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (2.17ms)
+Completed 200 OK in 10ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:51:57 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (43.61ms)
+Completed 200 OK in 60ms (Views: 40.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/profiles/1" for 127.0.0.1 at 2017-09-29 09:52:44 -0400
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (18.7ms)
+Completed 200 OK in 26ms (Views: 18.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profiles" for 127.0.0.1 at 2017-09-29 09:55:29 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.8ms)
+Completed 200 OK in 20ms (Views: 15.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-09-29 09:55:34 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.75ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-09-29 09:55:42 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.35ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateGames (20171003115137)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" serial primary key, "name" character varying, "company" character varying, "genre" character varying)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171003115137"]]
+  [1m[35m (59.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserGames (20171003115531)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "user_games" ("id" serial primary key, "user_id" integer, "game_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171003115531"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "games" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "LOL"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserGame Load (3.6ms)[0m  [1m[34mSELECT "user_games".* FROM "user_games"[0m
+  [1m[36mGame Load (1.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" ORDER BY "games"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGame Load (1.8ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" ORDER BY "games"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_games" ("user_id", "game_id") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "eric@test.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_games" ON "users"."id" = "user_games"."user_id" WHERE "user_games"."game_id" = $1[0m  [["game_id", 1]]
+  [1m[36mProfile Load (1.9ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Started POST "/api/v1/games" for 127.0.0.1 at 2017-10-03 08:17:37 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/games"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [18 times] (10.5ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.2ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (120.9ms)
+Started POST "/api/v1/games" for 127.0.0.1 at 2017-10-03 08:18:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GamesController):
+  
+actionpack (5.0.6) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (5.6ms)
+Started GET "/api/v1/games" for 127.0.0.1 at 2017-10-03 08:18:44 -0400
+Processing by Api::V1::GamesController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 8.6ms)
+
+
+  
+NameError (uninitialized constant Api::V1::GamesController::GameSerializer):
+  
+app/controllers/api/v1/games_controller.rb:6:in `index'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.2ms)
+Started GET "/api/v1/games" for 127.0.0.1 at 2017-10-03 08:21:38 -0400
+Processing by Api::V1::GamesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (1.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+[active_model_serializers]   [1m[36mUserGame Load (1.1ms)[0m  [1m[34mSELECT "user_games".* FROM "user_games" WHERE "user_games"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_games" ON "users"."id" = "user_games"."user_id" WHERE "user_games"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (61.2ms)
+Completed 200 OK in 103ms (Views: 71.3ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/api/v1/games" for 127.0.0.1 at 2017-10-03 08:22:07 -0400
+Processing by Api::V1::GamesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_games" ON "users"."id" = "user_games"."user_id" WHERE "user_games"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.44ms)
+Completed 200 OK in 26ms (Views: 12.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-10-03 08:22:28 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (37.97ms)
+Completed 200 OK in 47ms (Views: 35.2ms | ActiveRecord: 3.5ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTeammates (20171003223703)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "teammates" ("user_id" integer, "teammate_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_teammates_on_user_id_and_teammate_id" ON "teammates"  ("user_id", "teammate_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_teammates_on_teammate_id_and_user_id" ON "teammates"  ("teammate_id", "user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171003223703"]]
+  [1m[35m (68.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@test.com"], ["password_digest", "$2a$10$lu6WRZ01hs/x7UgT0QlRz.tPtw4VtUhAsZug0oWKFOriSj1tW0cx6"], ["created_at", "2017-10-03 22:50:34.050510"], ["updated_at", "2017-10-03 22:50:34.050510"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "teammates" ("user_id", "teammate_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 1], ["teammate_id", 2], ["created_at", "2017-10-03 22:50:48.419108"], ["updated_at", "2017-10-03 22:50:48.419108"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "eric@test.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "PitaLover"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 LIMIT $2[0m  [["display_name", "PitaLover"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "display_name") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 2], ["display_name", "PitaLover"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+Started GET "/api/v1/teammates/1" for 127.0.0.1 at 2017-10-03 18:52:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (23.9ms)
+Completed 500 Internal Server Error in 116ms (ActiveRecord: 11.7ms)
+
+
+  
+NoMethodError (undefined method `read_attribute_for_serialization' for #<Hash:0x007fc8d9d91800>):
+  
+app/controllers/api/v1/teammates_controller.rb:6:in `show'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.8ms)
+Started GET "/api/v1/teammates/1" for 127.0.0.1 at 2017-10-03 18:53:15 -0400
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.42ms)
+Completed 200 OK in 23ms (Views: 10.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/teammates/1" for 127.0.0.1 at 2017-10-03 18:57:52 -0400
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (3.8ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (43.62ms)
+Completed 200 OK in 64ms (Views: 37.0ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/api/v1/teammates/1" for 127.0.0.1 at 2017-10-03 18:58:16 -0400
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.07ms)
+Completed 200 OK in 38ms (Views: 23.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/teammates/1" for 127.0.0.1 at 2017-10-03 18:58:28 -0400
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.64ms)
+Completed 200 OK in 50ms (Views: 33.3ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/api/v1/profiles/undefined" for ::1 at 2017-10-10 22:42:08 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#update as HTML
+  Parameters: {"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games", "id"=>"undefined", "profile"=>{"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games"}}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:20:in `authenticate_user?'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.9ms)
+Started GET "/api/v1/profiles" for ::1 at 2017-10-10 22:42:20 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:20:in `authenticate_user?'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.1ms)
+Started POST "/api/v1/login" for ::1 at 2017-10-10 22:42:28 -0400
+Processing by Api::V1::UsersController#login as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@test.com"}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 6.1ms)
+
+
+Started PATCH "/api/v1/profiles/undefined" for ::1 at 2017-10-10 22:42:42 -0400
+Processing by Api::V1::ProfilesController#update as HTML
+  Parameters: {"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games", "id"=>"undefined", "profile"=>{"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:20:in `authenticate_user?'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.6ms)
+Started POST "/api/v1/signup" for ::1 at 2017-10-10 22:43:19 -0400
+Processing by Api::V1::UsersController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"email"=>"test@test.com"}}
+Unpermitted parameter: user
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.com"], ["password_digest", "$2a$10$d2pUSFMhPJIpkeS643Tw9uSUFZhCXXNEQsn9Zdbj6iMusVsN37TWu"], ["created_at", "2017-10-11 02:43:19.755557"], ["updated_at", "2017-10-11 02:43:19.755557"]]
+  [1m[35m (77.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 170ms (Views: 0.6ms | ActiveRecord: 87.0ms)
+
+
+Started GET "/api/v1/profiles" for ::1 at 2017-10-10 22:43:19 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:20:in `authenticate_user?'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.2ms)
+Started PATCH "/api/v1/profiles/undefined" for ::1 at 2017-10-10 22:43:37 -0400
+Processing by Api::V1::ProfilesController#update as HTML
+  Parameters: {"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games", "id"=>"undefined", "profile"=>{"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/models/auth.rb:11:in `decode'
+app/controllers/application_controller.rb:20:in `authenticate_user?'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.1ms)
+Started GET "/api/v1/teammates/1" for ::1 at 2017-10-10 22:44:52 -0400
+Processing by Api::V1::TeammatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "teammates" ON "users"."id" = "teammates"."teammate_id" WHERE "teammates"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mProfile Load (8.6ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (3.4ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "user_games" ON "games"."id" = "user_games"."game_id" WHERE "user_games"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (59.51ms)
+Completed 200 OK in 137ms (Views: 72.6ms | ActiveRecord: 19.5ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2017-10-10 22:45:06 -0400
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"eric@test.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eric@test.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 68ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/profiles" for ::1 at 2017-10-10 22:46:09 -0400
+Processing by Api::V1::ProfilesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.62ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2017-10-10 22:46:35 -0400
+Processing by Api::V1::UsersController#login as HTML
+  Parameters: {"email"=>"eric@test.com", "password"=>"[FILTERED]", "user"=>{"email"=>"eric@test.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eric@test.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 68ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/api/v1/profiles/undefined" for ::1 at 2017-10-10 22:46:45 -0400
+Processing by Api::V1::ProfilesController#update as HTML
+  Parameters: {"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games", "id"=>"undefined", "profile"=>{"display_name"=>"daBest", "first_name"=>"Eric", "last_name"=>"Games"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, profile
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass):
+  
+app/controllers/api/v1/profiles_controller.rb:31:in `update'
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eric/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.7ms)
+Started GET "/api/v1/profiles" for ::1 at 2017-10-10 22:46:55 -0400
+Processing by Api::V1::ProfilesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (7.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.43ms)
+Completed 200 OK in 14ms (Views: 4.4ms | ActiveRecord: 7.7ms)
+
+
+  [1m[35m (11.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (25.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAvatarColumnsToUsers (20171013005904)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAvatarColumnsToProfiles (20171013005904)
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mALTER TABLE "profiles" ADD "avatar_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "profiles" ADD "avatar_content_type" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "profiles" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "profiles" ADD "avatar_updated_at" timestamp[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171013005904"]]
+  [1m[35m (62.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started PATCH "/api/v1/profiles/1" for ::1 at 2017-10-28 22:08:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#update as HTML
+  Parameters: {"avatar"=>"data:image/jpeg;base64,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", "id"=>"1", "profile"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Unpermitted parameters: id, profile
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format %m '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]'
+Command :: PATH=/usr/local/bin/identify:$PATH; convert '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' -auto-orient -resize "64x64" '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/62bb1ee376c670a06f7829a25bb16daa20171028-72090-hg10tj'
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format %m '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]'
+Command :: PATH=/usr/local/bin/identify:$PATH; convert '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' -auto-orient -resize "100x100" '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/62bb1ee376c670a06f7829a25bb16daa20171028-72090-bzojie'
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/identify:$PATH; identify -format %m '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]'
+Command :: PATH=/usr/local/bin/identify:$PATH; convert '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/8d777f385d3dfec8815d20f7496026dc20171028-72090-gbpeu8[0]' -auto-orient -resize "200x200" '/var/folders/pp/qh0nlr5s3f747bt6f_wb9vfr0000gn/T/62bb1ee376c670a06f7829a25bb16daa20171028-72090-vxsspp'
+  [1m[36mProfile Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "profiles" WHERE "profiles"."display_name" = $1 AND ("profiles"."id" != $2) LIMIT $3[0m  [["display_name", "emoney"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "profiles" SET "avatar_file_size" = $1, "avatar_updated_at" = $2, "avatar_file_name" = $3 WHERE "profiles"."id" = $4[0m  [["avatar_file_size", 7463], ["avatar_updated_at", "2017-10-29 02:08:03.408219"], ["avatar_file_name", "data"], ["id", 1]]
+[paperclip] deleting /Users/eric/Projects/PubStomp/pubstompapi/public/system/profiles/avatars/000/000/001/original/data
+[paperclip] deleting /Users/eric/Projects/PubStomp/pubstompapi/public/system/profiles/avatars/000/000/001/small/data
+[paperclip] deleting /Users/eric/Projects/PubStomp/pubstompapi/public/system/profiles/avatars/000/000/001/medium/data
+[paperclip] deleting /Users/eric/Projects/PubStomp/pubstompapi/public/system/profiles/avatars/000/000/001/large/data
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (8.34ms)
+Completed 200 OK in 284ms (Views: 36.1ms | ActiveRecord: 13.5ms)
+
+
