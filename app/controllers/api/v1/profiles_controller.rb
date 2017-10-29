@@ -35,10 +35,11 @@ class Api::V1::ProfilesController < ApplicationController
 
     def update
       @profile = Profile.where(["user_id = ?", @user.id]).first
+    
       if @profile.update(profile_params)
         render json: @profile, serializer: ProfileSerializer
       else
-        render json: @profile.errors, status: 400
+        render json: @profile.errors, status: 422
       end
     end
 
@@ -54,7 +55,7 @@ class Api::V1::ProfilesController < ApplicationController
     private
 
       def profile_params
-        params.permit(:display_name, :first_name, :last_name)
+        params.permit(:display_name, :first_name, :last_name, :avatar)
       end
 
   end

@@ -3,8 +3,8 @@ class Profile < ActiveRecord::Base
   
   belongs_to :user
 
-  has_attached_file :avatar, styles: { small: "64x64", med: "100x100", large: "200x200" }
-  validates_attachment :image, :presence => true,
+  has_attached_file :avatar, styles: { small: "64x64", medium: "100x100", large: "200x200" }
+  validates_attachment :avatar, :presence => true,
   :content_type => { :content_type => /\Aimage\/.*\z/ },
   :size => { :in => 0..100.kilobytes }
 
