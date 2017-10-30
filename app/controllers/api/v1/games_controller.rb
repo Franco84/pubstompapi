@@ -1,14 +1,16 @@
 class Api::V1::GamesController < ApplicationController
   before_action :authenticate_user?
-  
+
     def index
-      @games = Game.all
-      render json: @games, each_serializer: GameSerializer
+      url = "https://api-2445582011268.apicast.io/games/?search=mario&fields=name,cover&limit=20"
+      @games = JSON.parse(Excon.get(url, headers: { "user-key" => ENV["IGDB_KEY"]}).body)
+      render json: @games
     end
-  
+
     def show
-      @game = Game.find(params[:id])
-      render json: @game, serializer: GameSerializer
+      url = "https://api-2445582011268.apicast.io/games/?search=#{params[:id]}&fields=name,cover&limit=20"
+      @games = JSON.parse(Excon.get(url, headers: { "user-key" => ENV["IGDB_KEY"]}).body)
+      render json: @games
     end
 
   #WILL BE LOADED IN THRU TASKS/ JOBS  FUTURE: Maybe admins?
@@ -23,7 +25,7 @@ class Api::V1::GamesController < ApplicationController
     #     }, status: 400
     #   end
     # end
-  
+
     # def update
     #   if @game.update(game_params)
     #     render json: @game, serializer: GameSerializer
@@ -31,7 +33,7 @@ class Api::V1::GamesController < ApplicationController
     #     render json: @game.errors, status: 400
     #   end
     # end
-  
+
     # def destroy
     #   if @game.destroy
     #     render json: { message: 'Game was deleted successfully.' }
@@ -39,8 +41,7 @@ class Api::V1::GamesController < ApplicationController
     #     render json: @game.errors, status: 400
     #   end
     # end
-  
+
     private
-  
+
   end
-  

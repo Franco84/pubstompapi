@@ -22,6 +22,8 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem "paperclip", "~> 5.0.0"
+gem 'excon'
+gem 'figaro'
 
 # Auth gems
 gem 'jwt'
