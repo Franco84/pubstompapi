@@ -7761,3 +7761,847 @@ puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
   Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
   Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:25:38 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 400 Bad Request in 158ms (Views: 13.6ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:27:01 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 400 Bad Request in 6ms (Views: 0.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-29 21:27:04 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.26ms)
+Completed 200 OK in 1028ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-29 21:27:05 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:27:05 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.8ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 400 Bad Request in 4ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.19ms)
+Completed 200 OK in 609ms (Views: 2.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-29 21:27:07 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.59ms)
+Completed 200 OK in 520ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-29 21:27:07 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.93ms)
+Completed 200 OK in 456ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:27:10 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.9ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 400 Bad Request in 5ms (Views: 0.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:28:07 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 400 Bad Request in 5ms (Views: 0.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:30:12 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 400 Bad Request in 4ms (Views: 0.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-29 21:32:14 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 400 Bad Request in 10ms (Views: 1.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 10:03:44 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (3.89ms)
+Completed 200 OK in 524ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 10:03:44 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.52ms)
+Completed 200 OK in 545ms (Views: 3.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/games/Sonic" for ::1 at 2017-10-30 10:04:01 -0700
+Processing by Api::V1::GamesController#show as HTML
+  Parameters: {"id"=>"Sonic"}
+No serializer found for resource: {"id"=>64842, "name"=>"Sonic Classics: 3-in-1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.47ms)
+Completed 200 OK in 564ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/kirby" for ::1 at 2017-10-30 10:04:06 -0700
+Processing by Api::V1::GamesController#show as HTML
+  Parameters: {"id"=>"kirby"}
+No serializer found for resource: {"id"=>3721, "name"=>"Kirby & The Amazing Mirror", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/jzg8iwywgzjlwlnkjpic.jpg", "cloudinary_id"=>"jzg8iwywgzjlwlnkjpic", "width"=>250, "height"=>223}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.67ms)
+Completed 200 OK in 494ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/binding" for ::1 at 2017-10-30 10:04:26 -0700
+Processing by Api::V1::GamesController#show as HTML
+  Parameters: {"id"=>"binding"}
+No serializer found for resource: {"id"=>14542, "name"=>"The Binding of Isaac: Wrath of the Lamb", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/sl4akmjno808dbaila10.jpg", "cloudinary_id"=>"sl4akmjno808dbaila10", "width"=>318, "height"=>159}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.64ms)
+Completed 200 OK in 505ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/api/v1/games/undefined" for ::1 at 2017-10-30 10:04:45 -0700
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::GamesController):
+  
+actionpack (5.0.6) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (11.5ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 10:04:56 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.9ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 400 Bad Request in 11ms (Views: 1.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 10:04:59 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.08ms)
+Completed 200 OK in 914ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 10:05:00 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.06ms)
+Completed 200 OK in 803ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/games/sonic" for ::1 at 2017-10-30 10:05:21 -0700
+Processing by Api::V1::GamesController#show as HTML
+  Parameters: {"id"=>"sonic"}
+No serializer found for resource: {"id"=>64842, "name"=>"Sonic Classics: 3-in-1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.25ms)
+Completed 200 OK in 573ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 15:40:54 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.12ms)
+Completed 400 Bad Request in 23ms (Views: 3.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:40:55 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.68ms)
+Completed 200 OK in 1285ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:40:56 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (9.57ms)
+Completed 200 OK in 471ms (Views: 10.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:40:57 -0700
+Processing by Api::V1::GamesController#index as HTML
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 15:40:57 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.95ms)
+Completed 400 Bad Request in 14ms (Views: 8.4ms | ActiveRecord: 0.7ms)
+
+
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.63ms)
+Completed 200 OK in 527ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:40:57 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.26ms)
+Completed 200 OK in 517ms (Views: 3.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:40:58 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (3.26ms)
+Completed 200 OK in 474ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 15:41:04 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 400 Bad Request in 6ms (Views: 1.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:41:04 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (5.51ms)
+Completed 200 OK in 533ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:41:05 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (12.77ms)
+Completed 200 OK in 748ms (Views: 13.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:49:37 -0700
+Processing by Api::V1::GamesController#index as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.11ms)
+Completed 200 OK in 1137ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:49:38 -0700
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.1ms)
+Completed 200 OK in 482ms (Views: 2.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 15:49:45 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 400 Bad Request in 6ms (Views: 0.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 15:57:29 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 400 Bad Request in 88ms (Views: 10.3ms | ActiveRecord: 29.2ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 15:57:43 -0700
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 15:57:43 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::GamesController#default_list as HTML
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::GamesController):
+  
+actionpack (5.0.6) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (4.3ms)
+Completed 500 Internal Server Error in 30095ms (ActiveRecord: 0.0ms)
+
+
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+app/controllers/api/v1/games_controller.rb:6:in `default_list'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.3ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:00:47 -0700
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:00:57 -0700
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 16:00:57 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.8ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.4ms)
+Completed 400 Bad Request in 74ms (Views: 9.2ms | ActiveRecord: 14.3ms)
+
+
+Processing by Api::V1::GamesController#default_list as HTML
+Processing by Api::V1::GamesController#index as HTML
+Completed 500 Internal Server Error in 30070ms (ActiveRecord: 0.0ms)
+
+
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+app/controllers/api/v1/games_controller.rb:6:in `default_list'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.7ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 60445ms (ActiveRecord: 12.4ms)
+
+
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+app/controllers/api/v1/games_controller.rb:12:in `index'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.7ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (57.7ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:02:27 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 400 Bad Request in 80ms (Views: 8.1ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:02:28 -0700
+Started GET "/api/v1/games/" for ::1 at 2017-10-30 16:02:28 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 30087ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 30079ms (ActiveRecord: 1.5ms)
+
+
+  
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+  
+app/controllers/api/v1/games_controller.rb:6:in `default_list'
+app/controllers/api/v1/games_controller.rb:12:in `index'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.7ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (116.4ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (113.9ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:04:32 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 400 Bad Request in 27ms (Views: 4.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:04:52 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 400 Bad Request in 102ms (Views: 18.9ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:04:54 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:05:14 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 30048ms (ActiveRecord: 0.0ms)
+
+
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+app/controllers/api/v1/games_controller.rb:6:in `default_list'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (76.0ms)
+Completed 500 Internal Server Error in 30066ms (ActiveRecord: 0.8ms)
+
+
+  
+Excon::Error::Socket (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  
+app/controllers/api/v1/games_controller.rb:6:in `default_list'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.8ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.5ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:07:21 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.2ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 400 Bad Request in 24ms (Views: 4.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:07:49 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::GamesController#default_list as HTML
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:08:09 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.84ms)
+Completed 200 OK in 162375ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (3.88ms)
+Completed 200 OK in 145392ms (Views: 4.7ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:11:51 -0700
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:12:01 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.8ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 400 Bad Request in 38ms (Views: 6.4ms | ActiveRecord: 10.5ms)
+
+
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.65ms)
+Completed 200 OK in 973ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:12:02 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.37ms)
+Completed 200 OK in 871ms (Views: 2.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:12:08 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 400 Bad Request in 13ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:12:11 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (2.76ms)
+Completed 200 OK in 628ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:12:43 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 400 Bad Request in 6ms (Views: 1.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:12:49 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.31ms)
+Completed 200 OK in 500ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/sonic" for ::1 at 2017-10-30 16:12:53 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/games/search/sonic"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered collection of /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [44 times] (24.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.1ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (126.6ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:13:22 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 400 Bad Request in 138ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:13:23 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.69ms)
+Completed 200 OK in 967ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/sonic" for ::1 at 2017-10-30 16:13:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/games/search/sonic"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [44 times] (10.5ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.4ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:14:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.9ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 400 Bad Request in 76ms (Views: 13.5ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:14:19 -0700
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.27ms)
+Completed 200 OK in 631ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/sonic" for ::1 at 2017-10-30 16:14:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/games/search/sonic"):
+  
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered collection of /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [44 times] (11.7ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.2ms)
+  Rendering /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/mischasarah/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (105.8ms)
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:15:39 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.3ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 400 Bad Request in 13ms (Views: 0.9ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:17:50 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 400 Bad Request in 4ms (Views: 0.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:18:51 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 400 Bad Request in 4ms (Views: 0.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/profiles/1" for ::1 at 2017-10-30 16:19:37 -0700
+Processing by Api::V1::ProfilesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE (user_id = 1) ORDER BY "profiles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 400 Bad Request in 26ms (Views: 5.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/games/search/" for ::1 at 2017-10-30 16:20:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::GamesController#default_list as HTML
+No serializer found for resource: {"id"=>3990, "name"=>"Mario & Sonic at the Sochi 2014 Olympic Winter Games", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/fgzkvw0b4a0sjjtwlz9p.jpg", "cloudinary_id"=>"fgzkvw0b4a0sjjtwlz9p", "width"=>250, "height"=>352}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.4ms)
+Completed 200 OK in 632ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/sonic" for ::1 at 2017-10-30 16:20:04 -0700
+Processing by Api::V1::GamesController#search as HTML
+  Parameters: {"id"=>"sonic"}
+No serializer found for resource: {"id"=>64842, "name"=>"Sonic Classics: 3-in-1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.1ms)
+Completed 200 OK in 692ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/games/search/sonic%20and%20knuckles" for ::1 at 2017-10-30 16:20:21 -0700
+Processing by Api::V1::GamesController#search as HTML
+  Parameters: {"id"=>"sonic and knuckles"}
+No serializer found for resource: {"id"=>9475, "name"=>"Sonic & Knuckles", "cover"=>{"url"=>"//images.igdb.com/igdb/image/upload/t_thumb/nt91dujfuhrkwkfbdgf8.jpg", "cloudinary_id"=>"nt91dujfuhrkwkfbdgf8", "width"=>256, "height"=>311}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.08ms)
+Completed 200 OK in 616ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+

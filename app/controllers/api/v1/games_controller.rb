@@ -1,13 +1,13 @@
 class Api::V1::GamesController < ApplicationController
   before_action :authenticate_user?
 
-    def index
+    def default_list
       url = "https://api-2445582011268.apicast.io/games/?search=mario&fields=name,cover&limit=20"
       @games = JSON.parse(Excon.get(url, headers: { "user-key" => ENV["IGDB_KEY"]}).body)
       render json: @games
     end
 
-    def show
+    def search
       url = "https://api-2445582011268.apicast.io/games/?search=#{params[:id]}&fields=name,cover&limit=20"
       @games = JSON.parse(Excon.get(url, headers: { "user-key" => ENV["IGDB_KEY"]}).body)
       render json: @games
